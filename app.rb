@@ -23,5 +23,26 @@ module Citibike
       erb :home
     end
 
+    get "/form" do
+      erb :form
+    end
+
+    post "/form" do
+      "You chose #{params["start"]} and #{params["end"]}"
+    end
+
+    post "/map" do
+      @start = params["start"]
+      @end = params["end"]
+
+      @start_lat = @start.split(",")[0].gsub(/[^\d.-]/, "").to_f
+      @start_lng = @start.split(",")[1].gsub(/[^\d.-]/, "").to_f
+
+      @end_lat = @end.split(",")[0].gsub(/[^\d.-]/, "").to_f
+      @end_lng = @end.split(",")[1].gsub(/[^\d.-]/, "").to_f
+
+      erb :map
+    end
+
   end
 end

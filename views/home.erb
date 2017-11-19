@@ -1,2 +1,8 @@
 <h1>THE DATA</h1>
-<%= @data.inspect %>
+<ul>
+<% @data.each do |hash| %>
+    <% lat = hash["lat"] / 1000000.0 %>
+    <% lng = hash["lng"] / 1000000.0 %>
+    <li><%= "#{hash["name"]} | #{lat},#{lng}" %></li>
+<% end %>
+</ul>
